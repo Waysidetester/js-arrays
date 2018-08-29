@@ -106,8 +106,8 @@ const eventBuilder = () => {
     for (i = 0; i < elizabethSanger.events.length; i++) {
         newStatement += `<div class="events">`
         newStatement +=     `<p>Date: ${elizabethSanger.events[i].date}  ||  `;
-        newStatement +=     `${elizabethSanger.events[i].title}  ||  `;
-        newStatement +=     `${elizabethSanger.events[i].description}</p>`;
+        newStatement +=     `Event:  ${elizabethSanger.events[i].title}  ||  `;
+        newStatement +=     `Description: ${elizabethSanger.events[i].description}</p>`;
         newStatement += `</div>`
         
     }
@@ -117,13 +117,54 @@ const eventBuilder = () => {
 eventBuilder();
 
 const volunteerBuilder = () => {
-    
-}
+    let newStatement = '';
+    //name: address: email: phone: availability: activities: 
+    for (i = 0; i < elizabethSanger.volunteers.length; i++) {
+      newStatement += `<div class"volunteer">`;
+      newStatement +=   `<ul><h3>Name: ${elizabethSanger.volunteers[i].name}</h3>`;
+      newStatement +=   `<li>Address: ${elizabethSanger.volunteers[i].address}</li>`;
+      newStatement +=   `<li>Email: ${elizabethSanger.volunteers[i].email}</li>`;
+      newStatement +=   `<li>Phone Number:${elizabethSanger.volunteers[i].phone}</li>`;
+      newStatement +=   `<li>Availability: ${elizabethSanger.volunteers[i].availability}</li>`;
+      newStatement +=   `<li>Activities: ${elizabethSanger.volunteers[i].activities}</li></ul>`;
+      newStatement += `</div>`;
+    }
+    printDom(newStatement, 'volunteers');
+};
+
+volunteerBuilder();
+
+const bioBuilder = () => {
+  const newString = `<p><strong>Bio:</strong> ${elizabethSanger.biography}</p>`;
+  printDom(newString, 'biography');
+};
+
+bioBuilder();
 
 const voterRegistrationStringBuilder = () => {
     const newString = `<a href="https://${elizabethSanger.voterRegistrationUrl}" id="anchor">Register to vote</a>`;
     printDom(newString, 'voterRegistrationUrl');
 }
+
+
+const imgBuilder = () => {
+  let newStatement = '';
+  for (i = 0; i < elizabethSanger.images.length; i++) {
+    
+    newStatement += `<img src="${elizabethSanger.images[i].imageUrl}" alt="${elizabethSanger.images[i].description}"></img>`;
+    newStatement += `<p class="imgDescription">${elizabethSanger.images[i].description}</p>`;
+  }
+  printDom(newStatement, 'images');
+}
+
+imgBuilder();
+
+const missStateBuilder = () => {
+  const newString = `<p class="missionState"><strong>Mission Statement:</strong> ${elizabethSanger.missionStatement}</p>`;
+  printDom(newString, 'missionStatement');
+}
+
+missStateBuilder();
 
 voterRegistrationStringBuilder();
 
@@ -134,4 +175,4 @@ const updateVoterRegirtration = (newURL) => {
     voterRegistrationStringBuilder();
 }
 
-updateVoterRegirtration('https://classtracker.zoeames.com/Calendar')
+updateVoterRegirtration('https://www.bing.com')

@@ -5,3 +5,8 @@ body {
 .statement {
     background-color: red;
 }
+
+img{
+    width: 350px;
+    height: auto;
+}
