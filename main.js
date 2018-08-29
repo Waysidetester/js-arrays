@@ -1,6 +1,6 @@
 const printDom = (stringToPrint, divID) => {
     const selectedDiv = document.getElementById(divID);
-    selectedDiv.innerHTML += `<h3>${stringToPrint}</h3>`;
+    selectedDiv.innerHTML += stringToPrint;
 };
 
 console.log('I am linked');
@@ -69,3 +69,4 @@ animals.unshift('bats');
 for (let i = 0; i<animals.length; i++ ) {
     console.log('Animals:', animals[i]);
 }
+
