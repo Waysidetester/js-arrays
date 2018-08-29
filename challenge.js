@@ -73,30 +73,65 @@ let elizabethSanger = {
 
 console.log(elizabethSanger.volunteers[2].email);
 
+const congDisBuilder = () => {
 const congDis = elizabethSanger.congressionalDistrict;
-
 printDom(`<h3>Congressional District: ${congDis}</h3>`, 'congressionalDistrict');
-
-
-for (i = 0; i < elizabethSanger.statements.length; i++) {
-    
-    let j = elizabethSanger.statements[i].statement;
-    let t = elizabethSanger.statements[i].category;
-    printDom(`<p>Statement: ${j}  ||  category: ${t}</p>`, 'statements');
 }
 
-printDom(`<a href="https://${elizabethSanger.donationFormUrl}">Donation Form</a>`,'donationFormUrl');
+congDisBuilder();
 
-for (i = 0; i < elizabethSanger.events.length; i++) {
-    let j = elizabethSanger.events[i].date;
-    let t = elizabethSanger.events[i].title;
-    let k = elizabethSanger.events[i].description;
-    printDom(`<p>Date: ${j}  ||  Title: ${t}  ||  Description: ${k}</p>`, 'events');
+const statementsBuilder = () => {
+    let newStatement = '';
+    for (i = 0; i < elizabethSanger.statements.length; i++) {
+        newStatement += `<div class="statement">`;
+        newStatement +=     `<p class="statement">Statement: ${elizabethSanger.statements[i].statement}</p>`;
+        newStatement +=     `<p class="category">category: ${elizabethSanger.statements[i].category}</p>`;
+        newStatement += `</div>`;
+    }
+    
+    printDom(newStatement, 'statements');
+}
+
+statementsBuilder();
+
+const donationUrlBuilder = () => {
+printDom(`<a href="https://${elizabethSanger.donationFormUrl}">Donation Form</a>`,'donationFormUrl');
+}
+
+donationUrlBuilder();
+
+
+const eventBuilder = () => {
+    let newStatement = '';
+    for (i = 0; i < elizabethSanger.events.length; i++) {
+        newStatement += `<div class="events">`
+        newStatement +=     `<p>Date: ${elizabethSanger.events[i].date}  ||  `;
+        newStatement +=     `${elizabethSanger.events[i].title}  ||  `;
+        newStatement +=     `${elizabethSanger.events[i].description}</p>`;
+        newStatement += `</div>`
+        
+    }
+    printDom(newStatement, 'events');
+}
+
+eventBuilder();
+
+const volunteerBuilder = () => {
+    
 }
 
 const voterRegistrationStringBuilder = () => {
-    const newString = `<a href="https://${elizabethSanger.voterRegistrationUrl}">Register to vote</a>`;
+    const newString = `<a href="https://${elizabethSanger.voterRegistrationUrl}" id="anchor">Register to vote</a>`;
     printDom(newString, 'voterRegistrationUrl');
 }
 
 voterRegistrationStringBuilder();
+
+const updateVoterRegirtration = (newURL) => {
+    elizabethSanger.voterRegistrationUrl = newURL;
+    const removeLink = document.getElementById('anchor')
+    removeLink.parentNode.removeChild(removeLink);
+    voterRegistrationStringBuilder();
+}
+
+updateVoterRegirtration('https://classtracker.zoeames.com/Calendar')

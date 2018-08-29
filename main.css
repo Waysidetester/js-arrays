@@ -1,3 +1,7 @@
 body {
     background-color: lightsteelblue;
 }
+
+.statement {
+    background-color: red;
+}
