@@ -42,20 +42,30 @@ palChecker('racecar');
 
 let animals = ['cat', 'dog', 'bird', 'penguin'];
 
-console.log('Animals array:', animals);
+// console.log('Animals array:', animals);
 
 animals.pop();
 
-console.log('Animals array:', animals);
+// console.log('Animals array:', animals);
 
 animals.shift();
 
-console.log('Animals array:', animals);
+// console.log('Animals array:', animals);
 
 animals.push('frog');
 
-console.log('Animals array:', animals);
+// console.log('Animals array:', animals);
 
 animals.unshift('bats');
 
-console.log('Animals array:', animals);
+// console.log('Animals array:', animals);
+
+
+//FOR LOOPS
+//What is starting value = 
+//what is stopping value = name.length
+//How do you increment = +1
+
+for (let i = 0; i<animals.length; i++ ) {
+    console.log('Animals:', animals[i]);
+}
