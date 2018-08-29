@@ -25,14 +25,12 @@ console.log('newNum:',newNum);
 //write func that takes a word and tells us if it is a palindrome
 
 const palChecker = (word) => {
-    //yes if palindrome
-    //no if not
     let newWord = word.split('');
     newWord = newWord.reverse();
     newWord = newWord.join('');
-    if (newWord === word) {
+    if (newWord === word) {                     //yes if palindrome
         console.log(`${word} is a Palindrome`);
-    } else {
+    } else {                                    //no if not
         console.log(`${word} is NOT a Palindrome`);
     }
 
@@ -41,3 +39,23 @@ const palChecker = (word) => {
 palChecker('mom');
 palChecker('monkeyButt');
 palChecker('racecar');
+
+let animals = ['cat', 'dog', 'bird', 'penguin'];
+
+console.log('Animals array:', animals);
+
+animals.pop();
+
+console.log('Animals array:', animals);
+
+animals.shift();
+
+console.log('Animals array:', animals);
+
+animals.push('frog');
+
+console.log('Animals array:', animals);
+
+animals.unshift('bats');
+
+console.log('Animals array:', animals);
