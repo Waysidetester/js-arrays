@@ -142,7 +142,11 @@ const bioBuilder = () => {
 bioBuilder();
 
 const voterRegistrationStringBuilder = () => {
-    const newString = `<a href="https://${elizabethSanger.voterRegistrationUrl}" id="anchor">Register to vote</a>`;
+    let newString = '';
+    newString += `<div id="anchor">`
+    newString +=    `<a href="https://${elizabethSanger.voterRegistrationUrl}">Register to vote</a>`;
+    newString +=    `<button id="voterRegButt">Change Link</button>`;
+    newString += `</div>`
     printDom(newString, 'voterRegistrationUrl');
 }
 
@@ -175,4 +179,10 @@ const updateVoterRegirtration = (newURL) => {
     voterRegistrationStringBuilder();
 }
 
-updateVoterRegirtration('https://www.bing.com')
+const editLink = document.getElementById('voterRegButt');
+const linkChange = () => {
+  updateVoterRegirtration('https://www.bing.com');
+};
+
+editLink.addEventListener('click', linkChange);
+
