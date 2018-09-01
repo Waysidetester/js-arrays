@@ -144,7 +144,7 @@ bioBuilder();
 const voterRegistrationStringBuilder = () => {
     let newString = '';
     newString += `<div id="anchor">`
-    newString +=    `<a href="https://${elizabethSanger.voterRegistrationUrl}">Register to vote</a>`;
+    newString +=    `<a href="https://${elizabethSanger.voterRegistrationUrl}">${elizabethSanger.voterRegistrationUrl}</a>`;
     newString +=    `<button id="voterRegButt">Change Link</button>`;
     newString += `</div>`
     printDom(newString, 'voterRegistrationUrl');
@@ -154,27 +154,58 @@ const voterRegistrationStringBuilder = () => {
 const imgBuilder = () => {
   let newStatement = '';
   for (i = 0; i < elizabethSanger.images.length; i++) {
-    
-    newStatement += `<img src="${elizabethSanger.images[i].imageUrl}" alt="${elizabethSanger.images[i].description}"></img>`;
-    newStatement += `<p class="imgDescription">${elizabethSanger.images[i].description}</p>`;
+    newStatement += `<div id="${elizabethSanger.images[i].description}">`
+    newStatement +=   `<img src="${elizabethSanger.images[i].imageUrl}" alt="${elizabethSanger.images[i].description}"></img>`;
+    newStatement +=   `<p class="imgDescription">${elizabethSanger.images[i].description}</p>`;
+    newStatement += `</div>`
   }
   printDom(newStatement, 'images');
 }
 
 imgBuilder();
 
-const missStateBuilder = () => {
-  const newString = `<p class="missionState"><strong>Mission Statement:</strong> ${elizabethSanger.missionStatement}</p>`;
-  printDom(newString, 'missionStatement');
+
+const updateImages = (newImgUrl, newImgDesc, newImgType) => {
+  elizabethSanger.images[i].imageUrl = newImgUrl;
+  elizabethSanger.images[i].description = newImgDesc;
+  elizabethSanger.images[i].type = newImgType;
+  const removeOldImg = document.getElementById(elizabethSanger.images[i].description);
+  removeMissState.parentNode.removeChild(removeMissState);
+  missStateBuilder();
 }
 
+
+// Leave stuff below alone!!!!
+
+const missStateBuilder = () => {
+  let newString = ''
+    newString += '<div id="mission">'
+    newString +=    `<p class="missionState"><strong>Mission Statement:</strong> ${elizabethSanger.missionStatement}</p>`;
+    newString +=    `<button id="missStateButt">Change Misssion Statement</button>`
+    newString += `</div>`
+  printDom(newString, 'missionStatement');
+};
+
 missStateBuilder();
+
+const updateMissState = (newMissState) => {
+  elizabethSanger.missionStatement = newMissState;
+  const removeMissState = document.getElementById('mission');
+  removeMissState.parentNode.removeChild(removeMissState);
+  missStateBuilder();
+}
+
+const missStateChange = () => {
+  updateMissState('cat');
+}
+
+document.getElementById('missStateButt').addEventListener('click', missStateChange);
 
 voterRegistrationStringBuilder();
 
 const updateVoterRegirtration = (newURL) => {
     elizabethSanger.voterRegistrationUrl = newURL;
-    const removeLink = document.getElementById('anchor')
+    const removeLink = document.getElementById('anchor');
     removeLink.parentNode.removeChild(removeLink);
     voterRegistrationStringBuilder();
 }
@@ -185,4 +216,5 @@ const linkChange = () => {
 };
 
 editLink.addEventListener('click', linkChange);
+
 
