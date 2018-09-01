@@ -153,26 +153,38 @@ const voterRegistrationStringBuilder = () => {
 
 const imgBuilder = () => {
   let newStatement = '';
+  newStatement += `<div id="imagesRemover">`;
   for (i = 0; i < elizabethSanger.images.length; i++) {
     newStatement += `<div id="${elizabethSanger.images[i].description}">`
     newStatement +=   `<img src="${elizabethSanger.images[i].imageUrl}" alt="${elizabethSanger.images[i].description}"></img>`;
     newStatement +=   `<p class="imgDescription">${elizabethSanger.images[i].description}</p>`;
-    newStatement += `</div>`
+    newStatement +=   `<button id="${elizabethSanger.images[i].imageUrl}">Change image</button>`
+    newStatement += `</div>`;
   }
+  newStatement += `</div>`;
   printDom(newStatement, 'images');
 }
 
 imgBuilder();
 
 
-const updateImages = (newImgUrl, newImgDesc, newImgType) => {
+const updateImages = (i, newImgUrl, newImgDesc, newImgType) => { //select index, image, description, and type
+  const removeOldImg = document.getElementById('imagesRemover');
+  removeOldImg.parentNode.removeChild(removeOldImg);
   elizabethSanger.images[i].imageUrl = newImgUrl;
   elizabethSanger.images[i].description = newImgDesc;
   elizabethSanger.images[i].type = newImgType;
-  const removeOldImg = document.getElementById(elizabethSanger.images[i].description);
-  removeMissState.parentNode.removeChild(removeMissState);
-  missStateBuilder();
+  
+  imgBuilder();
 }
+
+for (i = 0; i < elizabethSanger.images[i]; i++) {
+  const id = elizabethSanger.images[i].imageUrl;
+  document.getElementById(id).addEventListener('click', id)
+    updateImages(i, 'https://r.hswstatic.com/w_907/gif/tesla-cat.jpg', 'black cat', 'single cat');
+  
+}
+
 
 
 // Leave stuff below alone!!!!
